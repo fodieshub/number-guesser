@@ -23,6 +23,13 @@ const game = document.querySelector('#game'),
 minNum.textContent = min;
 maxNum.textContent = max;
 
+// Add event Listener to Play Again
+game.addEventListener('mousedown', function(e){
+  if(e.target.className === 'play-again'){
+    window.location.reload();
+  }
+});
+
 // Listen for guess
 guessBtn.addEventListener('click', function(){
   let guess = parseInt(guessInput.value);
@@ -41,7 +48,7 @@ guessBtn.addEventListener('click', function(){
       guessesLeft -= 1;
       if(guessesLeft === 0) {
         gameOver(false, `Game Over, You Lost, The Correct Number was ${winningNum}`);
-        
+
     } else {
       guessInput.value = '';
       guessInput.style.borderColor = "red";
@@ -62,6 +69,10 @@ function gameOver(won, msg) {
     //Change Text color
     message.style.color = color;
     setMessage(msg);
+
+    //Play Again
+    guessBtn.value = 'Play Again';
+    guessBtn.className += 'play-again';
 }
 
 //Error Message
