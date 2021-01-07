@@ -8,7 +8,7 @@ Let player choose to play again
 //Game Value
 let min = 1,
     max = 10,
-    winningNum = 2,
+    winningNum = getRandomNumber(min, max),
     guessesLeft = 3;
 
 // UI Element
@@ -73,6 +73,11 @@ function gameOver(won, msg) {
     //Play Again
     guessBtn.value = 'Play Again';
     guessBtn.className += 'play-again';
+}
+
+//Randon number generator
+function getRandomNumber(min, max){
+  return Math.floor(Math.random() * (max-min + 1) + min);
 }
 
 //Error Message
