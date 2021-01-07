@@ -28,11 +28,19 @@ guessBtn.addEventListener('click', function(){
   
   //Validation
   if(isNaN(guess) || guess < min || guess > max){
-    setMessage(`Please Enter a Number Between ${min} and ${max}`);
+    setMessage(`Please Enter a Number Between ${min} and ${max}` ,'red');
+  }
+  //Check if won
+  if(guess === winningNum){
+    guessInput.disabled = true;
+    //Change Border color
+    guessInput.style.borderColor = "green";
+    setMessage(`You Won, The Number is ${winningNum}` ,'green');
   }
 });
 //Error Message
-function setMessage(msg){
+function setMessage(msg, color){
+  message.style.color = color;
   message.textContent = msg;
 }
   
